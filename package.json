@@ -1,0 +1,37 @@
+{
+  "name": "server-app-food",
+  "version": "0.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "dependencies": {
+    "argon2": "^0.28.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
+    "express": "~4.16.1",
+    "hbs": "~4.0.4",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-redis": "^6.0.0",
+    "mongoose": "^6.0.11",
+    "morgan": "~1.9.1",
+    "node-pre-gyp": "0.6.x",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "vansang",
+  "license": "MIT"
+}

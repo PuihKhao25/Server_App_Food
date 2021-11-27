@@ -1,0 +1,56 @@
+
+###
+GET   http://localhost:3000/api/auth/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTc1OGJmZGI1MWI0ODk1NWE0ODkzZDYiLCJpYXQiOjE2MzUyNjY4MDAsImV4cCI6MTYzNTI2NjgzMH0.YSR-mQxIody5TxRFpCHgoVMCxeKhqLGJUpzz5GTIJ9g
+###
+POST   http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{ 
+    "email" : "nvsang.18it2@gmail.com",
+    "password" : "12345",
+    "username" : "sang12hj",
+    "confirmPassword": "123456789"
+}
+###
+
+GET   http://localhost:3000/api/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXRkZmdoZDIyMkBnbWFpbC5jb20iLCJpYXQiOjE2MzUzNDkyODN9.ampqR6Bvp65gB7rYows6-bIvhCx6DcEZjAQTzE2t2OY
+
+###
+
+POST   http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email" : "nvsang.18it2@gmail.com",
+    "password" : "12345"
+}
+
+###
+
+GET  http://localhost:3000/api/get-product
+
+
+###
+POST  http://localhost:3000/api/add-product
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTYzNTQ3OTg2Mn0.jwmxmgyKUcjb7eaSPQw0khAkssatj_linzSsKuvieMQ
+Content-Type: application/json
+
+{
+    "name" : "banh cuon fdfdfd",
+    "description" : "um ba la chap",
+    "avata" : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Ffood&psig=AOvVaw05OgsvzYhjzC5AnIvaDxfn&ust=1635495037908000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIiMv_fT7PMCFQAAAAAdAAAAABAD"
+}
+
+###
+POST  http://localhost:3000/api/add-category
+Content-Type: application/json
+
+{
+    "name" : "sinh tố",
+    "avata" : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Ffood&psig=AOvVaw05OgsvzYhjzC5AnIvaDxfn&ust=1635495037908000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIiMv_fT7PMCFQAAAAAdAAAAABAD"
+}
+
+###
+GET  http://localhost:3000/api/get-category
