@@ -6,9 +6,9 @@ const CategoryController = require('../controller/CategoryController')
 const ProductController = require('../controller/ProductController')
 
 
-router.get('/get-product',verifyToken, ProductController.getProducts)
+router.get('/get-product', ProductController.getProducts)
 
-router.post('/add-product',verifyToken, ProductController.addProducts)
+router.post('/add-product', ProductController.addProducts)
 
 router.post('/add-category', CategoryController.addCategory)
 
