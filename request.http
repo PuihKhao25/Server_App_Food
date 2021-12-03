@@ -30,7 +30,6 @@ Content-Type: application/json
 ###
 
 GET  http://localhost:3000/api/get-product
-Authorization: Bearer eyJhhjbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXRkZmdoZDIyMkBnbWFpbC5jb20iLCJpYXQiOjE2MzUzNDkyODN9.ampqR6Bvp65gB7rYows6-bIvhCx6DcEZjAQTzE2t2OY
 
 ###
 POST  http://localhost:3000/api/add-product
@@ -38,7 +37,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzY
 Content-Type: application/json
 
 {
-    "name" : "banh cuon fdfdfd",
+    "name" : "banh cuon fdfdfddfdsfsdf",
     "description" : "um ba la chap",
     "avata" : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Ffood&psig=AOvVaw05OgsvzYhjzC5AnIvaDxfn&ust=1635495037908000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIiMv_fT7PMCFQAAAAAdAAAAABAD"
 }
