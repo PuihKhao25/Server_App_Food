@@ -53,3 +53,22 @@ Content-Type: application/json
 
 ###
 GET  http://localhost:3000/api/get-category
+
+###
+GET  http://localhost:3000/api/search-key
+Content-Type: application/json
+
+{
+    "key" : "banh cuon "
+    
+}
+
+###
+POST  http://localhost:3000/api/add-banner
+Content-Type: application/json
+
+{
+    "img" : "https://jmb.com.vn/wp-content/uploads/2020/12/sp3.jpg",
+    "url" : "banner 1"
+}
+
