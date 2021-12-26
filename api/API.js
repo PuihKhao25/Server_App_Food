@@ -2,18 +2,18 @@ const express = require('express');
 const router = express.Router();
 const verifyToken = require('../middleware/auth')
 
-const AuthController = require('../controller/AuthController');
-const CategoryController = require('../controller/CategoryController')
-const ProductController = require('../controller/ProductController')
-const BannerController = require('../controller/BannerController')
-const SearchController = require('../controller/SearchController')
+const AuthController = require('../controller/Api/AuthController');
+const CategoryController = require('../controller/Api/CategoryController')
+const ProductController = require('../controller/Api/ProductController')
+const BannerController = require('../controller/Api/BannerController')
+const SearchController = require('../controller/Api/SearchController')
 
 
-router.post('/auth/register',AuthController.register )
+router.post('/auth/register', AuthController.register)
 
 router.post('/auth/login', AuthController.login)
 
-router.get('/auth/logout',verifyToken, AuthController.logout) 
+router.get('/auth/logout', verifyToken, AuthController.logout)
 
 router.get('/get-product', ProductController.getProducts)
 
