@@ -1,17 +1,14 @@
 const Product = require('../../models/Product')
 
-const getProducts = async(req, res) => {
-    try {
-        const products = await Product.find()
-        res.json(products)
-    } catch (error) {
-        res.json({ message: 'get product fail' })
-    }
-
-}
-
 const addProducts = async(req, res) => {
-    const { name, description, avata } = req.body
+    const { 
+        name, 
+        description, 
+        avata,
+        price,
+        address,
+        voted
+    } = req.body
     console.log(req.body)
     if (!name)
         return res
@@ -20,7 +17,7 @@ const addProducts = async(req, res) => {
         const name_product = await Product.findOne({ name })
         if (name_product)
             return res.json({ success: false, message: 'Ad product fail' })
-        const newProduct = new Product({ name, description, avata })
+        const newProduct = new Product({ name, description, avata, price, address, voted })
         await newProduct.save()
         return res.json({ success: true, message: 'Add product oke' })
     } catch (error) {
@@ -30,8 +27,35 @@ const addProducts = async(req, res) => {
     }
 
 }
+const getProducts = async(req, res) => {
+    try {
+        const products = await Product.find()
+        res.json(products)
+    } catch (error) {
+        res.json({ message: 'get product fail' })
+    }
 
+}
+const deleteProduct = async(req, res) => {
+    try {
+		const DeleteCondition = { _id: req.params.id }
+		const deletedProduct = await Product.findOneAndDelete(DeleteCondition)
+
+		// User not authorised or post not found
+		if (!deletedProduct)
+			return res.status(401).json({
+				success: false,
+				message: 'Post not found or user not authorised'
+			})
+
+		res.json({ success: true, post: deletedProduct })
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ success: false, message: 'Internal server error' })
+	}
+}
 module.exports = {
     addProducts,
-    getProducts
+    getProducts,
+    deleteProduct
 }

@@ -9,6 +9,16 @@ const getCategory = async(req, res) => {
     }
 
 }
+const deleteCategory = async(req, res) => {
+    const id =req.body
+    console.log(id)
+    try {
+        const categories = await Category.findByIdAndDelete(id)
+    } catch (error) {
+        res.json({ message: 'get categories fail' })
+    }
+
+}
 const addCategory = async(req, res) => {
     const { name, avata } = req.body
     console.log(req.body)
@@ -31,5 +41,6 @@ const addCategory = async(req, res) => {
 }
 module.exports = {
     addCategory,
-    getCategory
+    getCategory,
+    deleteCategory
 }

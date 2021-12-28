@@ -2,6 +2,7 @@
 ###
 GET   http://localhost:3000/api/auth/user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTc1OGJmZGI1MWI0ODk1NWE0ODkzZDYiLCJpYXQiOjE2MzUyNjY4MDAsImV4cCI6MTYzNTI2NjgzMH0.YSR-mQxIody5TxRFpCHgoVMCxeKhqLGJUpzz5GTIJ9g
+
 ###
 POST   http://localhost:3000/api/auth/register
 Content-Type: application/json
@@ -18,7 +19,6 @@ GET   http://localhost:3000/api/auth/logout
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXRkZmdoZDIyMkBnbWFpbC5jb20iLCJpYXQiOjE2MzUzNDkyODN9.ampqR6Bvp65gB7rYows6-bIvhCx6DcEZjAQTzE2t2OY
 
 ###
-
 POST   http://localhost:3000/api/auth/login
 Content-Type: application/json
 
@@ -28,22 +28,26 @@ Content-Type: application/json
 }
 
 ###
-
-GET  http://localhost:3000/api/get-product
+GET  http://localhost:3000/api/product/get
 
 ###
-POST  http://localhost:3000/api/add-product
+POST  http://localhost:3000/api/product/add
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTYzNTQ3OTg2Mn0.jwmxmgyKUcjb7eaSPQw0khAkssatj_linzSsKuvieMQ
 Content-Type: application/json
 
 {
-    "name" : "banh cuon fdfdfddfdsfsdf",
-    "description" : "um ba la chap",
-    "avata" : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Ffood&psig=AOvVaw05OgsvzYhjzC5AnIvaDxfn&ust=1635495037908000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIiMv_fT7PMCFQAAAAAdAAAAABAD"
+    "name": "banh cuon 2",
+    "description": "um ba la chap",
+    "avata": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVoB3a_65P1uEA5W3EgOyAsCbsmkTmtmVF8Q&usqp=CAU",
+    "price": 25000,
+    "address": "12334",
+    "voted": "123"
 }
+###
+DELETE   http://localhost:3000/api/product/delete/61c9b410815e5d6cd5286ab1
 
 ###
-POST  http://localhost:3000/api/add-category
+POST  http://localhost:3000/api/category/add
 Content-Type: application/json
 
 {
@@ -52,7 +56,8 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:3000/api/get-category
+GET  http://localhost:3000/api/category/get
+
 
 ###
 POST   http://localhost:3000/api/search-key
@@ -72,3 +77,30 @@ Content-Type: application/json
     "url" : "banner 1"
 }
 
+###
+POST  http://localhost:3000/api/user/add-to-cart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
+Content-Type: application/json
+
+{
+    "cartItems": [
+        {
+            "product": "61c9b3d2815e5d6cd5286aae",
+            "quantity": 1,
+            "price": 25000
+        }
+    ]
+}
+
+###
+GET  http://localhost:3000/api/user/cart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
+
+###
+POST   http://localhost:3000/api/user/delete
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
+Content-Type: application/json
+
+{
+    "ProductId": "61c9b3d2815e5d6cd5286aae"
+}

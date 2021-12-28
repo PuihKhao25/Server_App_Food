@@ -13,7 +13,20 @@ const ProductSchema = new Schema({
     },
     avata: {
         type: String,
+        required:true
     },
+    price: {
+        type: Number ,
+        required:true
+    },
+    address :{
+        type:String, 
+        required:true
+    },
+    voted :{
+        type:String, 
+        required:true
+    }
     
 })
 module.exports = mongoose.model('product', ProductSchema)

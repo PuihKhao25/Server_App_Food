@@ -7,9 +7,16 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 
-const indexRouter = require('./routes/index');
+const verifyToken = require('./middleware/auth')
+
 const adminRouter = require('./routes/admin');
+
+//api
 const API = require('./api/API');
+const ApiAuth = require('./api/Auth');
+const ApiUser = require('./api/User');
+const ApiProduct = require('./api/Product')
+const ApiCategory = require('./api/Category')
 
 const connectDB = require('./database/connectDB')
 
@@ -39,10 +46,14 @@ app.use('/img', express.static(__dirname + 'public/img'))
 app.use('/stylesheets', express.static(__dirname + 'public/stylesheets'))
 app.use('/vendor', express.static(__dirname + 'public/vendor'))
 
-app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 
+//api ApiCategory
 app.use('/api', API);
+app.use('/api/auth', ApiAuth);
+app.use('/api/category', ApiCategory);
+app.use('/api/product', ApiProduct);
+app.use('/api/user',verifyToken, ApiUser);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
