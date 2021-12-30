@@ -1,56 +1,73 @@
 const Cart = require('../../models/Carts')
+const User = require('../../models/User')
+const Product = require('../../models/Product')
 const mongoose = require('mongoose');
+
 const addCart = (req, res) =>{
-    
-    Cart.findOne({ user: req.user.user_id }).exec((error, cart) =>{
-        if(error) return res.json({error})
-        if(cart){  
-            req.body.cartItems.forEach((cartItems) => {
-                const product = cartItems.product
-                const item = cart.cartItems.find((c) => c.product == product)
-                if(item){
-                    Cart.findOneAndUpdate({user : req.user.user_id, "cartItems.product": product},{
-                        "$set" : {
-                            "cartItems": {
-                                ...cartItems,
-                                quantity: item.quantity + cartItems.quantity
-                            }
+    const userId = req.user.user_id
+    if (!userId)
+        return res
+            .json({ success: false, message: 'name already exist' })
+    try {
+        const user = User.findOne(userId)
+        if(user){
+            Cart.findOne({userId}).exec((error, cart) =>{
+                if(error) return res.json({error})
+                if(cart){  
+                    req.body.cartItems.forEach((cartItems) => {
+                        const product = cartItems.product
+                        const item = cart.cartItems.find((c) => c.product == product)
+                        if(item){
+                            Cart.findOneAndUpdate({user : req.user.user_id, "cartItems.product": product},{
+                                "$set" : {
+                                    "cartItems": {
+                                        ...cartItems,
+                                        quantity: item.quantity + cartItems.quantity
+                                    }
+                                }
+                            })
+                            .exec((error, cart) => {
+                                if(error) return res.json({ success: false, message: 'server error' })
+                                if(cart){
+                                    return res.json({cart})
+                                }
+                            })
+                        }else{
+                            Cart.findOneAndUpdate({user : req.user.user_id},{
+                                "$push" : {
+                                    "cartItems": cartItems
+                                }
+                            })
+                            .exec((error, cart) => {
+                                if(error) return res.json({error})
+                                if(cart){
+                                    return res.json({cart})
+                                }
+                            })
                         }
-                    })
-                    .exec((error, cart) => {
-                        if(error) return res.json({ success: false, message: 'server error' })
-                        if(cart){
-                            return res.json({cart})
-                        }
-                    })
+                    })   
                 }else{
-                    Cart.findOneAndUpdate({user : req.user.user_id},{
-                        "$push" : {
-                            "cartItems": cartItems
-                        }
+                    const cart = new Cart({
+                        user: req.user.user_id,
+                        cartItems: req.body.cartItems
                     })
-                    .exec((error, cart) => {
+                    cart.save((error, cart) =>{
                         if(error) return res.json({error})
                         if(cart){
                             return res.json({cart})
                         }
                     })
                 }
-            })   
-        }else{
-            console.log('hello')
-            const cart = new Cart({
-                user: req.user.user_id,
-                cartItems: req.body.cartItems
             })
-            cart.save((error, cart) =>{
-                if(error) return res.json({error})
-                if(cart){
-                    return res.json({cart})
-                }
-            })   
         }
-    })
+        
+    } catch (error) {
+        return res
+            .json({ success: false, message: 'server error' })
+        
+    }
+  
+    
 }
 const removeCartItems = async(req, res) => {
     try {
@@ -75,20 +92,51 @@ const removeCartItems = async(req, res) => {
     }
 }
 
-const getCart = async(req, res) => {
-    try {
-        const products = await Cart.find()
-        res.json(products)
-    } catch (error) {
-        res.json({ message: 'get cart fail' })
+const getMyCart = async(req, res) => {
+    const cartId = req.body.CartId
+    if (!cartId){
+         return res
+            .json({ success: false, message: 'cartID already exist' })
+
+    }else{
+        Cart.findOne({cartId})
+            .exec((error, cart) => {
+                if(error) return res.json({error})
+                if(cart){
+                    const product = cart.cartItems
+                    return res.json({product})
+                }
+
+            })
+    }
+    
+
+}
+const getProduct = async(req, res) => {
+    const ProductId = req.body
+    console.log(ProductId)
+    if (!ProductId){
+         return res
+            .json({ success: false, message: 'cartID already exist' })
+
+    }else{
+        Product.findOne({ProductId})
+            .exec((error, product) => {
+                if(error) return res.json({error})
+                if(product){
+                    return res.json({product})
+                }
+
+            })
     }
 
 }
 module.exports = {
 
     addCart,
-    getCart,
-    removeCartItems
+    removeCartItems,
+    getMyCart,
+    getProduct
   
     
 }

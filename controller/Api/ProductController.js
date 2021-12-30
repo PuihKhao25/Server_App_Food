@@ -36,6 +36,7 @@ const getProducts = async(req, res) => {
     }
 
 }
+
 const deleteProduct = async(req, res) => {
     try {
 		const DeleteCondition = { _id: req.params.id }
@@ -57,5 +58,5 @@ const deleteProduct = async(req, res) => {
 module.exports = {
     addProducts,
     getProducts,
-    deleteProduct
+    deleteProduct,
 }

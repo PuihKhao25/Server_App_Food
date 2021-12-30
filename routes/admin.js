@@ -8,6 +8,9 @@ router.get('/', function(req, res, next) {
 router.get('/add', function(req, res, next) {
     res.render('admin/addproduct', { title: 'Admin' });
 });
+router.get('/product', function (req, res, next) {
+    res.render('admin/product', { title: 'Admin' });
+});
 
 router.get('/admin/login', function(req, res, next) {
     res.render('login', { title: 'Login', layout : false });

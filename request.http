@@ -10,7 +10,7 @@ Content-Type: application/json
 { 
     "email" : "nvsang.18it2@gmail.com",
     "password" : "12345",
-    "username" : "sang12hj",
+    "username" : "nguyen van sang",
     "confirmPassword": "123456789"
 }
 ###
@@ -31,12 +31,15 @@ Content-Type: application/json
 GET  http://localhost:3000/api/product/get
 
 ###
+GET  http://localhost:3000/api/product/get
+
+###
 POST  http://localhost:3000/api/product/add
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTYzNTQ3OTg2Mn0.jwmxmgyKUcjb7eaSPQw0khAkssatj_linzSsKuvieMQ
 Content-Type: application/json
 
 {
-    "name": "banh cuon 2",
+    "name": "banh cuon ",
     "description": "um ba la chap",
     "avata": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVoB3a_65P1uEA5W3EgOyAsCbsmkTmtmVF8Q&usqp=CAU",
     "price": 25000,
@@ -79,13 +82,13 @@ Content-Type: application/json
 
 ###
 POST  http://localhost:3000/api/user/add-to-cart
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDg3Nzc3NH0.wSAk8RW2Qu0zB5abohv0u7uzOCJcAyg0a49zcoBqCwI
 Content-Type: application/json
 
 {
     "cartItems": [
         {
-            "product": "61c9b3d2815e5d6cd5286aae",
+            "product": "61cdd2e1e61146093325ba5d",
             "quantity": 1,
             "price": 25000
         }
@@ -93,14 +96,29 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:3000/api/user/cart
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
-
-###
-POST   http://localhost:3000/api/user/delete
+POST   http://localhost:3000/api/user/delete-to-cart
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
 Content-Type: application/json
 
 {
     "ProductId": "61c9b3d2815e5d6cd5286aae"
+}
+
+###
+GET  http://localhost:3000/api/user/my-cart
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
+Content-Type: application/json
+
+{
+    "CartId": "61c9b3d2815e5d6cd5286aae"
+}
+
+###
+GET  http://localhost:3000/api/user/get-product
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
+Content-Type: application/json
+
+{
+    "productId": "61c9d188f0b87b199856115d"
+    
 }

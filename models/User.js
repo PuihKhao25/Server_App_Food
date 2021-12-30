@@ -20,6 +20,10 @@ const UserSchema = new Schema({
         type: Number,
         default: 1
     },
+    cart_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'carts',
+    },
     createdAt: {
         type: Date,
         default: Date.now
