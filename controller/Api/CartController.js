@@ -98,12 +98,9 @@ const  getCart = async (req, res) => {
         user: req.user.user_id
     })
     .populate("cartItems.product")
-    .then(data => (
-        res.json({
-            status: 200,
-            data
-        })
-    ))
+    .then(data => {
+        res.json(data)
+    })
     .catch(err => {
         return res.status(500).json({
             status: 500,
