@@ -69,13 +69,14 @@ const addCart = (req, res) =>{
   
     
 }
-const removeCartItems = async(req, res) => {
+
+const deleteCart = async(req, res) => {
     try {
 		const DeleteCondition = { user: req.user.user_id }
 		const deletedCart = await Cart.findOneAndUpdate(DeleteCondition,{
             $pull: {
                 cartItems: {
-                    product: req.body.ProductId
+                    product: req.params.id
                 },
             }
         })
@@ -92,51 +93,29 @@ const removeCartItems = async(req, res) => {
     }
 }
 
-const getMyCart = async(req, res) => {
-    const cartId = req.body.CartId
-    if (!cartId){
-         return res
-            .json({ success: false, message: 'cartID already exist' })
-
-    }else{
-        Cart.findOne({cartId})
-            .exec((error, cart) => {
-                if(error) return res.json({error})
-                if(cart){
-                    const product = cart.cartItems
-                    return res.json({product})
-                }
-
-            })
-    }
-    
-
-}
-const getProduct = async(req, res) => {
-    const ProductId = req.body
-    console.log(ProductId)
-    if (!ProductId){
-         return res
-            .json({ success: false, message: 'cartID already exist' })
-
-    }else{
-        Product.findOne({ProductId})
-            .exec((error, product) => {
-                if(error) return res.json({error})
-                if(product){
-                    return res.json({product})
-                }
-
-            })
-    }
-
+const  getCart = async (req, res) => {
+    await Cart.find({
+        user: req.user.user_id
+    })
+    .populate("cartItems.product")
+    .then(data => (
+        res.json({
+            status: 200,
+            data
+        })
+    ))
+    .catch(err => {
+        return res.status(500).json({
+            status: 500,
+            message: err.message || 'same error'
+        })
+    })
 }
 module.exports = {
 
     addCart,
-    removeCartItems,
-    getMyCart,
-    getProduct
+    deleteCart,
+    getCart
   
     
 }

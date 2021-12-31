@@ -88,7 +88,7 @@ Content-Type: application/json
 {
     "cartItems": [
         {
-            "product": "61cdd2e1e61146093325ba5d",
+            "product": "61c9d188f0b87b199856115d",
             "quantity": 1,
             "price": 25000
         }
@@ -96,29 +96,9 @@ Content-Type: application/json
 }
 
 ###
-POST   http://localhost:3000/api/user/delete-to-cart
+DELETE   http://localhost:3000/api/user/delete/61cdd2e1e61146093325ba5d
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
-Content-Type: application/json
-
-{
-    "ProductId": "61c9b3d2815e5d6cd5286aae"
-}
 
 ###
-GET  http://localhost:3000/api/user/my-cart
+GET  http://localhost:3000/api/user/get-cart
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
-Content-Type: application/json
-
-{
-    "CartId": "61c9b3d2815e5d6cd5286aae"
-}
-
-###
-GET  http://localhost:3000/api/user/get-product
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
-Content-Type: application/json
-
-{
-    "productId": "61c9d188f0b87b199856115d"
-    
-}
