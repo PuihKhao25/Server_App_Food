@@ -99,7 +99,10 @@ const  getCart = async (req, res) => {
     })
     .populate("cartItems.product")
     .then(data => {
-        res.json(data)
+        data.forEach(e =>{
+            const cartItems = e.cartItems
+            res.json(cartItems)
+        }) 
     })
     .catch(err => {
         return res.status(500).json({
