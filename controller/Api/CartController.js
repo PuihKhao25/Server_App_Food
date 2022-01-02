@@ -103,7 +103,16 @@ const  getCart = async (req, res) => {
     .then(data => {
         data.forEach(e =>{
             const cartItems = e.cartItems
-            res.json({ success: true, cartItems: cartItems })
+            const arrayTotal = []
+            let sumPay = 0;
+            cartItems.forEach(e => {
+                const pay = e.payment
+                arrayTotal.push(pay)
+            })
+            for (let i = 0; i < arrayTotal.length; i++){
+                sumPay += arrayTotal[i];
+            }
+            return res.json({ success: true, cartItems: cartItems, allPayMent: sumPay})
         }) 
     })
     .catch(err => {

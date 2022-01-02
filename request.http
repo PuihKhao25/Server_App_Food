@@ -82,7 +82,7 @@ Content-Type: application/json
 {
     "cartItems": [
         {
-            "product": "61c9d188f0b87b199856115d",
+            "product": "61cdd2e1e61146093325ba5d",
             "quantity": 1,
             "price": 25000,
             "payment": 25000
