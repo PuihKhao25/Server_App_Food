@@ -103,7 +103,7 @@ const  getCart = async (req, res) => {
     .then(data => {
         data.forEach(e =>{
             const cartItems = e.cartItems
-            res.json(cartItems)
+            res.json({ success: true, cartItems: cartItems })
         }) 
     })
     .catch(err => {
