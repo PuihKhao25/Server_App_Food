@@ -84,7 +84,8 @@ Content-Type: application/json
         {
             "product": "61c9d188f0b87b199856115d",
             "quantity": 1,
-            "price": 25000
+            "price": 25000,
+            "payment": 25000
         }
     ]
 }

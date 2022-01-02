@@ -20,6 +20,10 @@ const CartSchema = new Schema({
             price: {
                  type: Number,
                  required: true   
+            },
+            payment: {
+                 type: Number,
+                 required: true   
             }
         }
     ]

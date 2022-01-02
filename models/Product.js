@@ -26,6 +26,11 @@ const ProductSchema = new Schema({
     voted :{
         type:String, 
         required:true
+    },
+    category: {
+        type: String,
+        ref: 'carts',
+        required: true 
     }
     
 })
