@@ -7,9 +7,9 @@ const postKey = async(req, res) => {
     if(key){
         const SearchProduct = await Product.find({ name: { $regex: key, $options: '$i' } })
         //const  SearchProduct =  await Product.find({ key})
-        return res.json(SearchProduct)
+        return res.json({ success: true, product: SearchProduct })
     }else{
-        return res.json({ message: 'server error' })
+        return res.json({ success: false, message: 'server error' })
     }
     
     
