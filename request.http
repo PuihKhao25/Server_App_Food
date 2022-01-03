@@ -61,7 +61,7 @@ GET   http://localhost:3000/api/search-key
 Content-Type: application/json
 
 {
-    "key" : "b"
+    "key" : ""
     
 }
 
