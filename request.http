@@ -57,11 +57,11 @@ GET  http://localhost:3000/api/category/get
 
 
 ###
-POST   http://localhost:3000/api/search-key
+GET   http://localhost:3000/api/search-key
 Content-Type: application/json
 
 {
-    "key" : "banh cuon 2343"
+    "key" : "banh cuon 2"
     
 }
 

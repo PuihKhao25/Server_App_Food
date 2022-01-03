@@ -9,7 +9,7 @@ router.post('/add-banner', BannerController.addBanner)
 
 router.get('/get-banner', BannerController.getBanner)
 
-router.post('/search-key', SearchController.postKey)
+router.get('/search-key', SearchController.postKey)
 
 
 
