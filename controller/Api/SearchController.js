@@ -7,9 +7,9 @@ const postKey = async(req, res) => {
     try {
         const SearchProduct = await Product.find({ name: { $regex: key, $options: '$i' } })
         //const  SearchProduct =  await Product.find({ key})
-        return res.json({ success: true, product: SearchProduct })
+        return res.json({product: SearchProduct })
     } catch (error) {
-        return res.json({ success: false })
+        return res.json('server await')
     }
        
     
