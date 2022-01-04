@@ -2,7 +2,7 @@ const Product = require('../../models/Product')
 
 const addProducts = async(req, res) => {
     const { 
-        name, 
+        name,
         description, 
         avata,
         price,
