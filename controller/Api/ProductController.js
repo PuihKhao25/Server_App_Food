@@ -30,6 +30,9 @@ const addProducts = async(req, res) => {
 const getProducts = async(req, res) => {
     var itemCategory = req.body.category
     console.log(itemCategory)
+    if(!itemCategory)
+        return res
+            .json({ success: false, message: 'name already exist' })
     try {
 
         if(itemCategory  === "all"){
