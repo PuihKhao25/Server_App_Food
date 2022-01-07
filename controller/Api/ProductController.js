@@ -34,12 +34,11 @@ const getProducts = async(req, res) => {
 
         if(itemCategory  === "all"){
             const products = await Product.find()
-            console.log("hello")
             res.json(products)
-        }else{
-           
-            const products = await Product.find(itemCategory)
-            res.json(products)
+        }
+        else{
+            const products = await Product.find({category: itemCategory})
+            res.json(products)     
         }
         
     } catch (error) {
