@@ -28,9 +28,19 @@ const addProducts = async(req, res) => {
 
 }
 const getProducts = async(req, res) => {
+    const itemCategory = req.body
+    if(!itemCategory)
+        return res.json({ success: false, message: 'category already exist' })
     try {
-        const products = await Product.find()
-        res.json(products)
+
+        if(itemCategory == "all"){
+            const products = await Product.find()
+            res.json(products)
+        }else{
+            const products = await Product.find(itemCategory)
+            res.json(products)
+        }
+        
     } catch (error) {
         res.json({ message: 'get product fail' })
     }
