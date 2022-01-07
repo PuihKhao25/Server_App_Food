@@ -100,7 +100,3 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzY
 
 ###
 GET  http://localhost:3000/api/product/get/1
-
-###
-GET  http://localhost:3000/api/user/get-count-item
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQHNpY3QudWRuLnZuIiwiaWF0IjoxNjQwOTczMzA3fQ.P8Q1V5JkOG-EYcvlZtQyoUIHV6zgP6bL0qBP3kgYsR0
