@@ -103,5 +103,5 @@ GET  http://localhost:3000/api/product/get
 Content-Type: application/json
 
 {
-   "category": "Đồ Ăn"
+   "category": "all"
 }

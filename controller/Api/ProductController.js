@@ -28,7 +28,7 @@ const addProducts = async(req, res) => {
 
 }
 const getProducts = async(req, res) => {
-    var itemCategory = req.body.category
+    const itemCategory = req.body.category
     console.log(itemCategory)
     if(!itemCategory)
         return res
