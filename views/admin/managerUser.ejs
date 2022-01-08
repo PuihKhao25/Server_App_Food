@@ -14,21 +14,20 @@
       </tr>
     </thead>
     <tbody>
-        <% for( var i = 0; i < users.length; i++){ %>
+        <% for( let user of users){ %>
         <tr>
-          <td class="centerTD"> <%= i+1 %></td>
-          <td> <%= users[i].username %></td>
+          <td class="centerTD"> <%= user._id %></td>
+          <td> <%= user.username %></td>
           <td class="centerTD">
-            <%= users[i].email %>
+            <%= user.email %>
           </td>
-          <td class="bt"> 
-            <button type="button" class="btn btn-primary" data-id="<%= users[i]._id %>" data-toggle="modal" data-target="#deleteUser" >delete</button>
-            <!-- <button type="button" class="btn btn-danger" >
-              
-              <i class="fas fa-trash"> </i>
-              <a href="" class="btn btn-link" data-id="<%= users[i]._id %>"> Delete</a> 
-            </button> -->
-          <!-- <a href="" data-toggle="modal" data-target="#exampleModal"class="btn btn-primary"  >Delete</a> -->
+          <td class="bt">
+            <form action="/admin/delete-user/<%= user._id %>" method="POST">
+                <button type="submit" class="btn btn-primary">delete</button>
+            </form> 
+            <form action="/admin/edit-user/<%= user._id %>" method="GET">
+              <button type="submit" class="btn btn-primary">EDIT</button>
+            </form>
           </td>
         </tr>
         <% } %>
@@ -37,7 +36,7 @@
 
 <!-- form delete -->
 
-<div  id="deleteUser" class="modal" tabindex="-1" role="dialog">
+<!-- <div  id="deleteUser" class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -53,11 +52,11 @@
       </div>
     </div>
   </div>
-</div> -->
+</div> 
 
- <form name="delete-user-form" action="" method="POST"></form> 
+ <form name="delete-user-form" action="" method="DELETE"></form>  -->
 
-<Script>
+<!-- <Script>
        document.addEventListener('DOMContentLoaded',function(){
          var userID;
          var deleteForm =document.forms["delete-user-form"]
@@ -70,9 +69,9 @@
         
           //  console.log(btnDeleteUser);
              btnDeleteUser.onclick =function(){
-              deleteForm.action ='admin/delete-user/' + userID + '?_method=DELETE';
+              deleteForm.action ='delete-user/' + userID + '?_method=DELETE';
               deleteForm.submit();
              }
        });
 
-</Script> 
+</Script>  -->

@@ -10,6 +10,7 @@ const logger = require('morgan');
 const verifyToken = require('./middleware/auth')
 
 const adminRouter = require('./routes/admin');
+const homeRouter = require('./routes/home')
 
 //api
 const API = require('./api/API');
@@ -46,6 +47,7 @@ app.use('/img', express.static(__dirname + 'public/img'))
 app.use('/stylesheets', express.static(__dirname + 'public/stylesheets'))
 app.use('/vendor', express.static(__dirname + 'public/vendor'))
 
+app.use('/', homeRouter)
 app.use('/admin', adminRouter);
 
 //api ApiCategory

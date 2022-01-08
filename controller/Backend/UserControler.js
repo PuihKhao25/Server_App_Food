@@ -10,17 +10,20 @@ const getUser = async(req, res) => {
     }
 
 }
-
+const getHome = (req, res) => {
+	res.render('admin/get-user', { title: 'Admin'});
+}
 const deleteUser = async(req, res) => {
 	const userId = req.params.id 
+	console.log(userId)
 	if(!userId) return res.json("fail id user")
     try {
 		
 		const deletedUser = await User.findOneAndDelete({_id :userId})
 		if (!deletedUser)
-			res.render('admin/get-user', { title: 'Admin'});
+			res.redirect('/admin')
 		else {
-			res.render('admin/', { title: 'Admin'});
+			res.redirect('/admin/get-user')
 			
 		}	
 	} catch (error) {
@@ -32,4 +35,5 @@ const deleteUser = async(req, res) => {
 module.exports = {
     getUser,
     deleteUser,
+	getHome
 }

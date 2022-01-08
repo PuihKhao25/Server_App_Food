@@ -7,11 +7,15 @@ POST   http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 { 
-    "email" : "nvsang.18it2@sict.udn.vn",
+    "email" : "nvsang.1jjj8it2@sict.udn.vn",
     "password" : "123456789",
-    "username" : "nguyen van sang",
+    "username" : "nguyen van sang 7",
     "confirmPassword": "123456789"
 }
+
+###
+POST   http://localhost:3000/api/auth/register
+
 ###
 
 GET   http://localhost:3000/api/auth/logout
@@ -90,8 +94,8 @@ Content-Type: application/json
 }
 
 ###
-DELETE   http://localhost:3000/api/user/delete/61cdd2e1e61146093325ba5d
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQGdtYWlsLmNvbSIsImlhdCI6MTY0MDY3MzM2NX0.TN1qTmXc-YOt5EJLU4X1vPQk7o0qcGjxv2OUlTWms90
+POST  http://localhost:3000/admin/delete-user/61d95269b76e729bf90c5cfb
+
 
 ###
 GET  http://localhost:3000/api/user/get-cart

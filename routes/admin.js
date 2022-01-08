@@ -11,7 +11,7 @@ router.get('/login', AuthController.getLogin)
 
 router.get('/get-user', UserControler.getUser)
 
-router.delete('/delete-user/:id',UserControler.deleteUser)
+router.post('/delete-user/:id',UserControler.deleteUser)
 
 router.get('/get-category', CategoryController.getCategory);
 
@@ -23,7 +23,7 @@ router.post('/add-product',ProductController.addProducts)
 
 router.get('/edit-product',ProductController.getEditProducts)
 
-router.post('/edit-product',ProductController.postEditProducts)
+router.post('/edit-product/:id',ProductController.postEditProducts)
 
 
 
