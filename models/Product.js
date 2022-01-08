@@ -7,11 +7,12 @@ const ProductSchema = new Schema({
         required: true,
         unique:true,
     },
-    description: {
+    img: {
         type: String,
-        required: true,
+        required:true,
+        default:"https://cdn.tgdd.vn/Files/2021/08/31/1379261/top-10-loai-banh-ngot-ngon-noi-tieng-nhat-tren-the-gioi-202108311558118672.jpg"
     },
-    avata: {
+    category: {
         type: String,
         required:true
     },
@@ -19,14 +20,9 @@ const ProductSchema = new Schema({
         type: Number ,
         required:true
     },
-    address :{
-        type:String, 
-        required:true
-    },
-    voted :{
-        type:String, 
-        required:true
-    }
-    
+    description: {
+        type: String,
+        required: true,
+    }, 
 })
 module.exports = mongoose.model('products', ProductSchema)

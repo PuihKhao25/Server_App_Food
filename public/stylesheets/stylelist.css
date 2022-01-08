@@ -1,0 +1,30 @@
+.theadTable{
+    text-align: center;
+}
+.imgProduct{
+    border-radius: 10%;
+    width: 60%;
+    height: 60%;
+
+}
+.centerTD{
+    text-align: center;
+}
+.bt{
+    text-align: center;
+}
+.btSave{
+    width: 150px;
+    border-radius: 10px;
+    background:#3498db;
+    text-align: center;
+    margin-left: 42%;
+}
+.inputChoose{
+    width: 50%;
+}
+.btAdd{
+    width: 15%;
+    border-radius: 5px;
+    background:#17a2b8;
+}
