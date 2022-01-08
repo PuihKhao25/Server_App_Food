@@ -7,7 +7,7 @@ const addCart = (req, res) =>{
     const userId = req.user.user_id
     if (!userId)
         return res
-            .json({ success: false, message: 'name already exist' })
+            .json({ success: false, message: 'token fail' })
     try {
         const user = User.findOne(userId)
         if(user){
@@ -18,18 +18,20 @@ const addCart = (req, res) =>{
                         const product = cartItems.product
                         const item = cart.cartItems.find((c) => c.product == product)
                         if(item){
+                            const allQuantity = item.quantity + cartItems.quantity
                             Cart.findOneAndUpdate({user : req.user.user_id, "cartItems.product": product},{
                                 "$set" : {
                                     "cartItems": {
                                         ...cartItems,
-                                        quantity: item.quantity + cartItems.quantity
+                                        quantity: allQuantity,
+                                        payment: item.price * allQuantity
                                     }
                                 }
                             })
                             .exec((error, cart) => {
-                                if(error) return res.json({ success: false, message: 'server error' })
+                                if(error) return res.json({ success: false, message: 'query cart to data fail' })
                                 if(cart){
-                                    return res.json({cart})
+                                    return res.json({ success: true, message: 'add quantity product to cart success' })
                                 }
                             })
                         }else{
@@ -39,9 +41,9 @@ const addCart = (req, res) =>{
                                 }
                             })
                             .exec((error, cart) => {
-                                if(error) return res.json({error})
+                                if(error) return res.json({ success: false, message: 'query cart to data fail' })
                                 if(cart){
-                                    return res.json({cart})
+                                    return res.json({ success: true, message: 'add product to cart success' })
                                 }
                             })
                         }
@@ -52,9 +54,9 @@ const addCart = (req, res) =>{
                         cartItems: req.body.cartItems
                     })
                     cart.save((error, cart) =>{
-                        if(error) return res.json({error})
+                        if(error) return res.json({ success: false, message: 'query cart to data fail' })
                         if(cart){
-                            return res.json({cart})
+                            return res.json({ success: true, message: 'add product to cart success' })
                         }
                     })
                 }
@@ -101,7 +103,24 @@ const  getCart = async (req, res) => {
     .then(data => {
         data.forEach(e =>{
             const cartItems = e.cartItems
-            res.json(cartItems)
+            const arrayTotal = []
+            const countList = []
+            let sumPay = 0;
+            let count = 0;
+            cartItems.forEach(e => {
+                const pay = e.payment
+                const quantity = e.quantity
+
+                arrayTotal.push(pay)
+                countList.push(quantity)
+            })
+            for (let i = 0; i < arrayTotal.length; i++){
+                sumPay += arrayTotal[i];
+            }
+            for (let i = 0; i < countList.length; i++){
+                count += countList[i];
+            }
+            return res.json({ success: true, cartItems: cartItems, allPayMent: sumPay, countItem: count})
         }) 
     })
     .catch(err => {
@@ -115,7 +134,7 @@ module.exports = {
 
     addCart,
     deleteCart,
-    getCart
+    getCart,
   
     
 }

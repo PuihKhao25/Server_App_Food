@@ -5,7 +5,7 @@ const ProductController = require('../controller/Api/ProductController')
 const verifyToken = require('../middleware/auth')
 
 
-router.get('/get', ProductController.getProducts)
+router.get('/get/:id', ProductController.getProducts)
 
 router.post('/add',verifyToken, ProductController.addProducts)
 
