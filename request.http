@@ -1,4 +1,3 @@
-
 ###
 GET   http://localhost:3000/api/auth/user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTc1OGJmZGI1MWI0ODk1NWE0ODkzZDYiLCJpYXQiOjE2MzUyNjY4MDAsImV4cCI6MTYzNTI2NjgzMH0.YSR-mQxIody5TxRFpCHgoVMCxeKhqLGJUpzz5GTIJ9g
@@ -57,11 +56,11 @@ GET  http://localhost:3000/api/category/get
 
 
 ###
-POST   http://localhost:3000/api/search-key
+POST  http://localhost:3000/api/search-key
 Content-Type: application/json
 
 {
-    "key" : "banh cuon 2343"
+    "key": "banh"
     
 }
 
@@ -82,9 +81,10 @@ Content-Type: application/json
 {
     "cartItems": [
         {
-            "product": "61c9d188f0b87b199856115d",
+            "product": "61cdd2e1e61146093325ba5d",
             "quantity": 1,
-            "price": 25000
+            "price": 25000,
+            "payment": 25000
         }
     ]
 }
@@ -97,8 +97,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzY
 GET  http://localhost:3000/api/user/get-cart
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibnZzYW5nLjE4aXQyQHNpY3QudWRuLnZuIiwiaWF0IjoxNjQwOTczMzA3fQ.P8Q1V5JkOG-EYcvlZtQyoUIHV6zgP6bL0qBP3kgYsR0
 
-### request admin
-GET  http://localhost:3000/admin/getProduct
-
 ###
-DELETE http://localhost:3000/admin/delete-user/61d939fdce67a6eeaa3cd983
+GET  http://localhost:3000/api/product/get/1
